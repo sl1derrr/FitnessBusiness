@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Telegram Mini App</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div id="user-data" class="user-card hidden">
+            <img id="user-avatar" class="avatar" src="" alt="User Avatar">
+            <div class="user-info">
+                <h2 id="user-name"></h2>
+                <p id="user-id"></p>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>Добро пожаловать!</h1>
+            <p>Мы рады видеть вас в нашем приложении</p>
+            
+            <div id="auth-message" class="message">
+                Идет загрузка данных...
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
