@@ -28,7 +28,7 @@
  * Основные стили для body 
  */
 body {
-    background: var(--tg-bg-color); /* Используем переменную для фона */
+    background: var(--clr); /* Используем переменную для фона */
     color: var(--tg-text-color);    /* Используем переменную для цвета текста */
     min-height: 100vh;             /* Минимальная высота - весь экран */
     padding: 20px;                 /* Внутренние отступы */
@@ -62,7 +62,7 @@ body {
     gap: 15px;                     /* Расстояние между элементами */
     margin-bottom: 25px;           /* Отступ снизу */
     padding: 15px;                 /* Внутренние отступы */
-    background: var(--tg-secondary-bg); /* Цвет фона */
+    background: var(--clr); /* Цвет фона */
     border-radius: 12px;           /* Закругленные углы */
 }
 

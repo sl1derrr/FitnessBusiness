@@ -1,4 +1,5 @@
 // Инициализация Telegram WebApp
+
 const tg = window.Telegram.WebApp;
 tg.expand(); // Растягиваем на весь экран
 
@@ -78,3 +79,5 @@ function setupApp() {
 
 // Запускаем приложение при загрузке страницы
 document.addEventListener('DOMContentLoaded', initApp);
+
+
