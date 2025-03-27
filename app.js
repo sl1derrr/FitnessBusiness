@@ -56,71 +56,59 @@ async function sendUserDataToServer(userData) {
     }
 }
 
-// Настройка основной логики приложения
-function setupApp() {
-    // Здесь реализуйте основную логику вашего приложения
-    console.log('Приложение инициализировано');
-}
-
 // Запускаем приложение при загрузке страницы
 document.addEventListener('DOMContentLoaded', initApp);
 
 const list = document.querySelectorAll('.list');
 const contents = document.querySelectorAll('.content');
 
-/* Лоудер */ 
-document.addEventListener("DOMContentLoaded", function() { /* При загрузке*/
-
-    setTimeout(function() {
-        loader.classList.add("hidden");
-
-        setTimeout(function() { /* Скрытие лоудера, появление контента */
-            loader.style.display = "none";
-            main.style.opacity = "1";
-            main.style.visibility = "visible";
-            main.home.page.visibility = "visible"
-        }, 500); // Завершение анимации
-    }, 2000);
-});
-
-
-// Функционал активного элемента меню
-
-function activeLink() { 
-    list.forEach(item => item.classList.remove('active'));
-    this.classList.add('active');
-
-    const contentId = this.querySelector('a').getAttribute('data-content');
-
-    contents.forEach(content => content.classList.remove('show'));
-    document.getElementById(contentId).classList.add('show');
-}
-
-list.forEach(item => item.addEventListener('click', activeLink));
-
-// Спарк
-
-document.body.addEventListener("click", (e) => {
-    const sparkCount = 12; // Количество частиц
-    for (let i = 0; i < sparkCount; i++) {
-      const spark = document.createElement("div");
-      spark.className = "spark";
-      document.body.appendChild(spark);
-  
-      // Устанавливаем положение и направление
-      const angle = (i * 360) / sparkCount;
-      const dx = 50 * Math.cos((angle * Math.PI) / 180); // Смещение по X
-      const dy = 50 * Math.sin((angle * Math.PI) / 180); // Смещение по Y
-      spark.style.setProperty("--dx", `${dx}px`);
-      spark.style.setProperty("--dy", `${dy}px`);
-  
-      // Устанавливаем начальные координаты частиц
-      spark.style.left = `${e.pageX}px`;
-      spark.style.top = `${e.pageY}px`;
-  
-      // Удаление частиц после завершения анимации
-      spark.addEventListener("animationend", () => spark.remove());
-    }
+document.addEventListener('DOMContentLoaded', function() {
+    animateStepsProgress();
+    setupTouchFeedback();
   });
+  
+  function animateStepsProgress() {
+    const stepCounter = document.getElementById('step-counter');
+    const progressRing = document.getElementById('progress-ring');
+  
+    if (!stepCounter || !progressRing) return;
+  
+    const maxSteps = 10000;
+    const currentSteps = 6916;
+    let displayedSteps = 0;
+  
+    const circumference = 2 * Math.PI * 88;
+    progressRing.style.strokeDasharray = circumference;
+    progressRing.style.strokeDashoffset = circumference;
+  
+    const stepInterval = setInterval(() => {
+      displayedSteps += Math.ceil(currentSteps / 60);
+      if (displayedSteps >= currentSteps) {
+        displayedSteps = currentSteps;
+        clearInterval(stepInterval);
+      }
+  
+      stepCounter.textContent = displayedSteps.toLocaleString();
+  
+      const offset = circumference - (displayedSteps / maxSteps) * circumference;
+      progressRing.style.strokeDashoffset = offset;
+    }, 20);
+  }
+  
+  function setupTouchFeedback() {
+    const interactiveElements = document.querySelectorAll('.workout-card, .achievement, .chart-bar, .recommendation-action, .nav-item');
+  
+    interactiveElements.forEach(element => {
+      element.addEventListener('touchstart', () => {
+        element.classList.add('touch-active');
+      });
+  
+      ['touchend', 'touchcancel'].forEach(event => {
+        element.addEventListener(event, () => {
+          element.classList.remove('touch-active');
+        });
+      });
+    });
+  }
 
 
