@@ -1,81 +1,497 @@
-/* 
- * Основные переменные для цветовой схемы Telegram
- * Используются стандартные цвета из Telegram WebApp
- */
- :root {
-    --tg-bg-color: #17212b;       /* Основной фоновый цвет */
-    --tg-text-color: #ffffff;     /* Цвет основного текста */
-    --tg-hint-color: #708499;     /* Цвет второстепенного текста */
-    --tg-button-color: #5288c1;   /* Цвет кнопок и акцентных элементов */
-    --tg-secondary-bg: #232e3c;   /* Цвет второстепенного фона */
-    --clr: #222327;   /* Серый цвет */
-    --green: #29fd53;   /* Зеленый цвет*/
-}
+@import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900');
 
-/* 
- * Сброс стандартных стилей и базовые настройки 
- * для всех элементов на странице
- */
 * {
-    margin: 0;                    /* Убираем внешние отступы */
-    padding: 0;                   /* Убираем внутренние отступы */
-    box-sizing: border-box;       /* Правильная модель размеров */
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; /* Системный шрифт */
-    -webkit-tap-highlight-color: transparent; /* Убираем подсветку при тапе */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+html,body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  
+}
+#main {
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    visibility: hidden;
+    transition: opacity 0.5s ease-in-out, visibility 0.5s;
+    padding-bottom: 70px; /* Высота меню, чтобы контент не скрывался за ним */
+    -webkit-overflow-scrolling: touch; /* Для плавной прокрутки на iOS */
 }
 
-/* 
- * Основные стили для body 
- */
-body {
-    background: var(--clr); /* Используем переменную для фона */
-    color: var(--tg-text-color);    /* Используем переменную для цвета текста */
-    min-height: 100vh;             /* Минимальная высота - весь экран */
-    padding: 20px;                 /* Внутренние отступы */
-    line-height: 1.5;              /* Межстрочный интервал */
+:root {
+    --clr: #222327;
+    --green: #29fd53;
 }
+.loader {
+    --size: 330px;
+    --duration: 1.5s;
+    --logo-color: var(--clr);
+    --background: linear-gradient(
+      0deg,
+      rgba(50, 50, 50, 0.2) 0%,
+      rgba(100, 100, 100, 0.2) 100%
+    );
+    height: var(--size);
+    aspect-ratio: 1;
+    position: relative;
+    transition: opacity 0.5s ease;
+  }
 
-/* 
- * Контейнер для основного содержимого 
- * Ограничивает ширину и центрирует контент
- */
-.container {
-    max-width: 100%;               /* Максимальная ширина */
-    margin: 0 auto;                /* Центрирование */
-    padding-bottom: 60px;          /* Отступ снизу для навигации */
-}
-
-/* 
- * Вспомогательный класс для скрытия элементов 
- */
 .hidden {
-    display: none !important;      /* Полное скрытие элемента */
+    opacity: 0;
+    visibility: hidden;
 }
 
-/* 
- * Стили для карточки пользователя 
- * Горизонтальное расположение аватарки и информации
- */
-.user-card {
-    display: flex;                 /* Гибкий контейнер */
-    align-items: center;           /* Выравнивание по центру */
-    gap: 15px;                     /* Расстояние между элементами */
-    margin-bottom: 25px;           /* Отступ снизу */
-    padding: 15px;                 /* Внутренние отступы */
-    background: var(--clr); /* Цвет фона */
-    border-radius: 12px;           /* Закругленные углы */
+  .loader .box {
+    position: absolute;
+    background: var(--clr);
+    background: var(--background);
+    border-radius: 50%;
+    border-top: 1px solid rgba(100, 100, 100, 1);
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 10px 10px -0px;
+    backdrop-filter: blur(5px);
+    animation: ripple var(--duration) infinite ease-in-out;
+  }
+  
+  .loader .box:nth-child(1) {
+    inset: 40%;
+    z-index: 99;
+  }
+  
+  .loader .box:nth-child(2) {
+    inset: 30%;
+    z-index: 98;
+    border-color: rgba(100, 100, 100, 0.8);
+    animation-delay: 0.2s;
+  }
+  
+  .loader .box:nth-child(3) {
+    inset: 20%;
+    z-index: 97;
+    border-color: rgba(100, 100, 100, 0.6);
+    animation-delay: 0.4s;
+  }
+  
+  .loader .box:nth-child(4) {
+    inset: 10%;
+    z-index: 96;
+    border-color: rgba(100, 100, 100, 0.4);
+    animation-delay: 0.6s;
+  }
+  
+  .loader .box:nth-child(5) {
+    inset: 0%;
+    z-index: 95;
+    border-color: rgba(100, 100, 100, 0.2);
+    animation-delay: 0.8s;
+  }
+  
+  .loader .logo {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-content: center;
+    padding: 20%;
+  }
+  
+  .loader .logo svg {
+    fill: var(--logo-color);
+    width: 100%;
+    animation: color-change var(--duration) infinite ease-in-out;
+  }
+  
+  @keyframes ripple {
+    0% {
+      transform: scale(1);
+      box-shadow: rgba(0, 0, 0, 0.3) 0px 10px 10px -0px;
+    }
+    50% {
+      transform: scale(1.3);
+      box-shadow: rgba(0, 0, 0, 0.3) 0px 30px 20px -0px;
+    }
+    100% {
+      transform: scale(1);
+      box-shadow: rgba(0, 0, 0, 0.3) 0px 10px 10px -0px;
+    }
+  }
+  
+  @keyframes color-change {
+    0% {
+      fill: var(--logo-color);
+    }
+    50% {
+      fill: white;
+    }
+    100% {
+      fill: var(--logo-color);
+    }
+  }
+.header {
+    text-align: center;
+    font-size: 1.1rem; /* Размер заголовка */
+    font-weight: 700;
+    margin-bottom: 20px; /* Отступ снизу */
+    color: #29fd53; /* Цвет текста */
+    text-transform: uppercase; /* Преобразование текста в верхний регистр */
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
 }
 
-/* 
- * Стили для аватарки пользователя 
- */
-.avatar {
-    width: 50px;                   /* Ширина */
-    height: 50px;                  /* Высота */
-    border-radius: 50%;            /* Круглая форма */
-    object-fit: cover;             /* Правильное отображение изображения */
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: var(--clr);
+    flex-direction: column; /* Все блоки идут в колонку */
+    text-align: center; /* Центрируем текст */
 }
 
-/* 
- * Стили для блока с информацией о пользователе 
- */
+.indicator::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -22px;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    border-top-right-radius: 20px;
+    box-shadow: 1px -10px 0 0 var(--clr);
+}
+
+.indicator::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -22px;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    border-top-left-radius: 20px;
+    box-shadow: -1px -10px 0 0 var(--clr);
+}
+
+.navigation {
+    height: 70px;
+    background: #fff;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    position: fixed;
+    align-items: center;
+    border-radius: 10px;
+    bottom: 0;
+    left: 0;
+    box-shadow: -1px -10px 0 0 var(--clr);
+}
+
+.navigation ul {
+    display: flex;
+    width: 350px;
+}
+
+.navigation ul li {
+    position: center;
+    list-style: none;
+    width: 70px;
+    height: 70px;
+    z-index: 1;
+}
+
+.navigation ul li a {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    font-weight: 500;
+}
+
+.navigation ul li a .icon {
+    position: relative;
+    display: block;
+    line-height: 72px;
+    font-size: 1.6em;
+    text-align: center;
+    transition: 0.5s;
+    color: var(--clr);
+}
+
+.navigation ul li:hover a .icon {
+    transform: translateY(-20px);
+}
+
+.navigation ul li a .text {
+    position: absolute;
+    color: var(--clr);
+    font-weight: 400;
+    font-size: 0.75em;
+    letter-spacing: 0.1em;
+    transition: 1s;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.navigation ul li:hover a.text {
+    opacity: 1;
+    transform: translateY(10px);
+}
+
+.navigation ul li.active a .icon {
+    transform: translateY(-32px);
+}
+
+.navigation ul li.active a .text {
+    opacity: 1;
+    transform: translateY(10px);
+}
+
+.indicator {
+    position: absolute;
+    top: -50%;
+    width: 70px;
+    height: 70px;
+    background: #29fd53;
+    border-radius: 50%;
+    border: 6px solid var(--clr);
+    transition: 0.5s;
+}
+
+
+
+.navigation ul li:nth-child(1).active ~ .indicator {
+    transform: translateX(calc(70px * 0));
+}
+
+.navigation ul li:nth-child(2).active ~ .indicator {
+    transform: translateX(calc(70px * 1));
+}
+
+.navigation ul li:nth-child(3).active ~ .indicator {
+    transform: translateX(calc(70px * 2));
+}
+
+.navigation ul li:nth-child(4).active ~ .indicator {
+    transform: translateX(calc(70px * 3));
+}
+
+.active {
+    font-weight: bold;
+    color: blue; /* Цвет для активного элемента */
+}
+
+.content {
+    display: none; /* Скрываем контент по умолчанию */
+}
+
+.show {
+    display: block; /* Показываем контент, когда это необходимо */
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden; /* Убираем прокрутку для всей страницы */
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #222327;
+    color: #fff;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column; /* Центрируем всё содержимое */
+    text-align: center;
+}
+
+.schedule-title {
+  margin-top: 70px; 
+}
+
+.schedule-container {
+    transition: opacity 0.5s ease-in-out, visibility 0.5s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 70%;
+    max-width: 210px;
+    margin: 20px auto;
+}
+
+
+.schedule-item .time {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #29fd53;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.schedule-item:nth-child(1) { animation-delay: 0s; }
+.schedule-item:nth-child(2) { animation-delay: 0.4s; }
+.schedule-item:nth-child(3) { animation-delay: 0.8s; }
+
+.schedule-item {
+    opacity: 0;  
+    animation: fadeInUp 0.5s ease-out forwards;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background: #333;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 10px 0;
+    width: 100%;
+    color: white;
+    position: relative;
+}
+
+.schedule-item .training-icon {
+    width: 170px; /* Фиксированная ширина для иконки */
+    height: 58px; /* Фиксированная высота для иконки */
+    border-radius: 4%;
+    object-fit: cover; /* Чтобы изображение не растягивалось */
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.schedule-item .price {
+    position: absolute;
+    margin-top: 5px;
+    right: 21px;
+    display: flex;
+    align-items: center;
+    color: #29fd53;
+}
+
+.schedule-item .price ion-icon {
+    margin-right: 5px;
+}
+
+/* Карточки с тренировками */
+
+.card {
+  width: 254px;
+  height: 130px;
+  border-radius: 20px;
+  background: #222327;
+  position: relative;
+  padding: 1.8rem;
+  border: 2px solid #29fd53;
+  transition: 0.5s ease-out;
+  overflow: visible;
+ }
+ 
+ .card-details {
+  color: black;
+  height: 100%;
+  gap: .5em;
+  display: grid;
+  place-content: center;
+ }
+ 
+ .button_explore {
+  width: 110px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  background-color: #29fd53;
+  border-radius: 30px;
+  color: var(--clr);
+  font-weight: 600;
+  border: none;
+  position: relative;
+  cursor: pointer;
+  transition-duration: .2s;
+  box-shadow: 5px 5px 10px var(--clr);
+  padding-left: 8px;
+  transition-duration: .5s;
+}
+
+.svgIcon {
+  height: 25px;
+  transition-duration: 1.5s;
+}
+
+.bell path {
+  fill: rgb(19, 19, 19);
+}
+
+.button_explore:hover {
+  background-color: var(--green);
+  transition-duration: .5s;
+}
+
+.button_explore:active {
+  transform: scale(0.97);
+  transition-duration: .2s;
+}
+
+.button_explore:hover .svgIcon {
+  transform: rotate(250deg);
+  transition-duration: 1.5s;
+}
+
+
+ .text-body {
+  color: #29fd53;
+ }
+ 
+ /*Text*/
+ .text-title {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #29fd53;
+ }
+ 
+/*Hover*/
+.card:hover {
+  border-color: var(--green);
+  box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
+ }
+ 
+ .card:hover .card-button {
+  transform: translate(-50%, 50%);
+  opacity: 1;
+ }
+
+ .cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+
+
+
+
+

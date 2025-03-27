@@ -16,21 +16,6 @@ async function initApp() {
     if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
         const user = tg.initDataUnsafe.user;
         
-        // Отображаем данные пользователя
-        userNameElement.textContent = `${user.first_name || ''} ${user.last_name || ''}`.trim() || 'Аноним';
-        userIdElement.textContent = `ID: ${user.id}`;
-        
-        // Устанавливаем аватар (если есть)
-        if (user.photo_url) {
-            userAvatarElement.src = user.photo_url;
-        } else {
-            userAvatarElement.style.display = 'none';
-        }
-        
-        // Показываем блок с данными пользователя
-        userDataElement.classList.remove('hidden');
-        authMessageElement.classList.add('hidden');
-        
         // Подготовка данных для отправки на сервер
         const userData = {
             tg_id: user.id,

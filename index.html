@@ -8,24 +8,152 @@
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
-    <div class="container">
-        <div id="user-data" class="user-card hidden">
-            <img id="user-avatar" class="avatar" src="" alt="User Avatar">
-            <div class="user-info">
-                <h2 id="user-name"></h2>
-                <p id="user-id"></p>
-            </div>
+    <div id="loader" class="loader">
+        <div class="box">
+          <div class="logo">
+            <svg fill="#" height="800px" width="800px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-50.34 -50.34 604.11 604.11" xml:space="preserve" stroke="#">
+
+                <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                
+                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+                
+                <g id="SVGRepo_iconCarrier"> <g> <g> <path d="M488.143,215.164L288.238,15.259c-20.345-20.345-53.455-20.345-73.8,0L15.782,213.915 c-20.758,20.758-20.758,54.515,0,75.273L214.95,488.356c9.719,9.719,22.645,15.073,36.388,15.073s26.669-5.354,36.388-15.073 l200.417-200.417c9.719-9.719,15.073-22.645,15.073-36.388C503.215,237.808,497.862,224.883,488.143,215.164z M413.022,274.008 c0,17.336-14.102,31.439-31.439,31.439c-5.497,0-10.581-1.545-15.082-4.024c-4.042,12.701-15.809,21.989-29.831,21.989 c-17.336,0-31.439-14.102-31.439-31.439v-13.474H197.443v13.474c0,17.336-14.102,31.439-31.439,31.439 c-14.022,0-25.789-9.288-29.831-21.989c-4.5,2.479-9.584,4.024-15.082,4.024c-17.336,0-31.439-14.102-31.439-31.439v-44.912 c0-17.336,14.102-31.439,31.439-31.439c5.497,0,10.581,1.545,15.082,4.024c4.042-12.701,15.809-21.989,29.831-21.989 c17.336,0,31.439,14.102,31.439,31.439v13.474h107.789V211.13c0-17.336,14.102-31.439,31.439-31.439 c14.022,0,25.789,9.288,29.831,21.989c4.5-2.479,9.584-4.024,15.082-4.024c17.336,0,31.439,14.102,31.439,31.439V274.008z"/> </g> </g> </g>
+                
+            </svg>
+          </div>
         </div>
-        
-        <div class="content">
-            <h1>Добро пожаловать!</h1>
-            <p>Мы рады видеть вас в нашем приложении фитнес-зала</p>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+      </div>
+    <div class="main" id="main">
+        <div class="content show" id="notifications"></div>
+        <div class="content" id="profile">
             
-            <div id="auth-message" class="message">
-                Идет загрузка данных...
+        </div>
+        <div class="content" id="home">
+            <div class="page">
+                <h2 class="header">Добро пожаловать в FitnessHub!</h2>
+                <p class="subheader">Выберите тренировку и начните свой путь к идеальной форме</p>
+                
+                <div class="cards-container">
+                    <!-- Карточка 1: Йога -->
+                    <div class="card">
+                        <div class="card-details">
+                            <p class="text-title">Йога</p>
+                            <p class="text-body">Расслабление и гибкость</p>
+                            <img src="" alt="Йога" class="training-icon">
+                        </div>
+                        <button class="button_explore">
+                            <svg class="svgIcon" viewBox="0 0 512 512" height="1em" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm50.7-186.9L162.4 380.6c-19.4 7.5-38.5-11.6-31-31l55.5-144.3c3.3-8.5 9.9-15.1 18.4-18.4l144.3-55.5c19.4-7.5 38.5 11.6 31 31L325.1 306.7c-3.2 8.5-9.9 15.1-18.4 18.4zM288 256a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"></path>
+                            </svg>
+                            Подробнее
+                        </button>
+                    </div>
+        
+                    <!-- Карточка 2: Кроссфит -->
+                    <div class="card">
+                        <div class="card-details">
+                            <p class="text-title">Кроссфит</p>
+                            <p class="text-body">Интенсив и выносливость</p>
+                            <img src="https://via.placeholder.com/150" alt="Кроссфит" class="training-icon">
+                        </div>
+                        <button class="button_explore">
+                            <svg class="svgIcon" viewBox="0 0 512 512" height="1em" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm50.7-186.9L162.4 380.6c-19.4 7.5-38.5-11.6-31-31l55.5-144.3c3.3-8.5 9.9-15.1 18.4-18.4l144.3-55.5c19.4-7.5 38.5 11.6 31 31L325.1 306.7c-3.2 8.5-9.9 15.1-18.4 18.4zM288 256a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"></path>
+                            </svg>
+                            Подробнее
+                        </button>
+                    </div>
+        
+                    <!-- Карточка 3: Зумба -->
+                    <div class="card">
+                        <div class="card-details">
+                            <p class="text-title">Зумба</p>
+                            <p class="text-body">Танцы и энергия</p>
+                            <img src="" alt="Зумба" class="training-icon">
+                        </div>
+                        <button class="button_explore">
+                            <svg class="svgIcon" viewBox="0 0 512 512" height="1em" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm50.7-186.9L162.4 380.6c-19.4 7.5-38.5-11.6-31-31l55.5-144.3c3.3-8.5 9.9-15.1 18.4-18.4l144.3-55.5c19.4-7.5 38.5 11.6 31 31L325.1 306.7c-3.2 8.5-9.9 15.1-18.4 18.4zM288 256a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"></path>
+                            </svg>
+                            Подробнее
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
+        <div class="content" id="schedule">
+            <h3>Расписание тренировок на 1 октября</h3>
+            <div class="schedule-container"> 
+                <!-- Основной контент после заголовка -->
+                <div class="schedule-item">
+                    <span class="time">08:00 - 09:00</span>
+                    <span class="class-name">Йога</span>
+                    <img src="https://nahodka.mastergym.ru/images/articles/yoga-ili-fitnes/zanyatie-yogoy.jpg" alt="Йога" class="training-icon">
+                    <span class="trainer">Тренер: Анна Антонова</span>
+                    <span class="price"><ion-icon name="cash-outline"></ion-icon></span> <!-- Платная тренировка -->
+                </div>
+                <div class="schedule-item">
+                    <span class="time">10:00 - 11:00</span>
+                    <span class="class-name">Кроссфит</span>
+                    <img src="https://www.premier-sport.ru/upload/resize_cache/iblock/418/570_420_2/mj7zb1srp6za24qcszkv1kvrh00oefpk.jpg" alt="Кроссфит" class="training-icon">
+                    <span class="trainer">Тренер: Джон Доу</span>
+                    
+                </div>
+                <div class="schedule-item">
+                    <span class="time">12:00 - 13:00</span>
+                    <span class="class-name">Зумба</span>
+                    <img src="https://img.championat.com/news/big/r/z/vsyo-chto-nuzhno-znat-o-napravlenii-zumba_1695724060467470352.jpg" alt="Зумба" class="training-icon">
+                    <span class="trainer">Тренер: Эмили Джонсон</span>
+                    <span class="price"><ion-icon name="cash-outline"></ion-icon></span> <!-- Платная тренировка -->
+                </div>
+            </div>
+        </div>
+    <div class="navigation">
+        <ul>
+            <li class="list">
+                <a href="#" data-content="profile">
+                    <span class="icon">
+                        <ion-icon name="person-outline"></ion-icon>
+                    </span>
+                    <span class="text">Профиль</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="#" data-content="notifications">
+                    <span class="icon">
+                        <ion-icon name="notifications-outline"></ion-icon>
+                    </span>
+                    <span class="text">Уведомления</span>
+                </a>
+            </li>
+            <li class="list active">
+                <a href="#" data-content="home">
+                    <span class="icon">
+                        <ion-icon name="planet-outline"></ion-icon>
+                    </span>
+                    <span class="text">Главная</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="#" data-content="schedule">
+                    <span class="icon">
+                        <ion-icon name="calendar-outline"></ion-icon>
+                    </span>
+                    <span class="text">Расписание</span>
+                </a>
+            </li>
+            <div class="indicator"></div>
+        </ul>
     </div>
+</div>    
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
 
     <script src="app.js"></script>
 </body>
