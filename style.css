@@ -27,7 +27,7 @@ html,body {
     --green: #29fd53;
 }
 .loader {
-    --size: 330px;
+    --size: 280px;
     --duration: 1.5s;
     --logo-color: var(--clr);
     --background: linear-gradient(
