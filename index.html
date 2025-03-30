@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Telegram Mini App</title>
+    <title>FitnessBusiness</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
-        <div class="home-indicator"></div>
         <div class="phone-screen">
           <div class="container">
             <div id="home-content" class="tab-content active">
               <div class="app-header">
-                <h1 class="app-title">Fitness Club</h1>
+                <h1 class="app-title">FitnessBusiness</h1>
                 <div class="user-avatar" id="user-avatar">MM</div>
               </div>
               <div class="progress-section">
@@ -24,64 +23,64 @@
                   </svg>
                   <div class="progress-text">
                     <div class="step-count" id="step-counter">0</div>
-                    <div class="step-label">steps</div>
-                    <div class="step-goal">Goal: 10,000</div>
+                    <div class="step-label">шагов</div>
+                    <div class="step-goal">Цель: 10,000</div>
                   </div>
                 </div>
       
                 <div class="activity-stats">
                   <div class="activity-stat">
                     <div class="stat-value">5.2</div>
-                    <div class="stat-label">km</div>
+                    <div class="stat-label">км</div>
                   </div>
                   <div class="activity-stat">
                     <div class="stat-value">465</div>
-                    <div class="stat-label">cal</div>
+                    <div class="stat-label">кал</div>
                   </div>
                   <div class="activity-stat">
                     <div class="stat-value">52</div>
-                    <div class="stat-label">min</div>
+                    <div class="stat-label">мин</div>
                   </div>
                 </div>
               </div>
       
               <div class="weekly-chart">
                 <div class="chart-header">
-                  <div class="chart-title">Weekly Activity</div>
+                  <div class="chart-title">Недельная активность</div>
                   <div class="chart-controls">
-                    <button class="chart-button" data-type="steps">Steps</button>
-                    <button class="chart-button active" data-type="calories">Calories</button>
-                    <button class="chart-button" data-type="distance">Distance</button>
+                    <button class="chart-button" data-type="steps">Шаги</button>
+                    <button class="chart-button active" data-type="calories">Калории</button>
+                    <button class="chart-button" data-type="distance">Дистанция</button>
                   </div>
                 </div>
                 <div class="chart-container" id="chart-container">
                   <div class="chart-bar mon-bar">
                     <div class="bar-value">420</div>
-                    <div class="day-label">Mon</div>
+                    <div class="day-label">Пн</div>
                   </div>
                   <div class="chart-bar tue-bar">
                     <div class="bar-value">350</div>
-                    <div class="day-label">Tue</div>
+                    <div class="day-label">Вт</div>
                   </div>
                   <div class="chart-bar wed-bar active">
                     <div class="bar-value">580</div>
-                    <div class="day-label">Wed</div>
+                    <div class="day-label">Ср</div>
                   </div>
                   <div class="chart-bar thu-bar">
                     <div class="bar-value">490</div>
-                    <div class="day-label">Thu</div>
+                    <div class="day-label">Чт</div>
                   </div>
                   <div class="chart-bar fri-bar">
                     <div class="bar-value">610</div>
-                    <div class="day-label">Fri</div>
+                    <div class="day-label">Пт</div>
                   </div>
                   <div class="chart-bar sat-bar">
                     <div class="bar-value">320</div>
-                    <div class="day-label">Sat</div>
+                    <div class="day-label">Сб</div>
                   </div>
                   <div class="chart-bar sun-bar">
                     <div class="bar-value">475</div>
-                    <div class="day-label">Sun</div>
+                    <div class="day-label">Вс</div>
                   </div>
                 </div>
               </div>
@@ -90,7 +89,7 @@
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
                 </svg>
-                Health Insights
+                Советы по здоровью
               </div>
       
               <div class="card sleep-card">
@@ -103,16 +102,16 @@
                     </svg>
                   </div>
                   <div class="sleep-info">
-                    <div class="sleep-title">Sleep Quality</div>
-                    <div class="sleep-time">Last night: 7h 15m</div>
+                    <div class="sleep-title">Качество сна</div>
+                    <div class="sleep-time">Последняя ночь: 7ч 15м</div>
                   </div>
                 </div>
                 <div class="progress-bar-container">
                   <div class="progress-bar sleep-progress"></div>
                 </div>
                 <div class="sleep-score">
-                  <span class="score-label">Sleep Score</span>
-                  <span class="score-value">85/100 (Good)</span>
+                  <span class="score-label">Оценка сна</span>
+                  <span class="score-value">85/100 (Хороший)</span>
                 </div>
               </div>
       
@@ -121,7 +120,7 @@
                   <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
                   <polyline points="14 2 14 8 20 8"></polyline>
                 </svg>
-                Today's Workouts
+                Активности сегодня
               </div>
       
               <div class="workout-list">
@@ -132,11 +131,11 @@
                     </svg>
                   </div>
                   <div class="workout-info">
-                    <div class="workout-name">Morning Run</div>
+                    <div class="workout-name">Утренняя пробежка</div>
                     <div class="workout-meta">
-                      <span>5.2 km</span>
-                      <span>32 min</span>
-                      <span>345 cal</span>
+                      <span>5.2 км</span>
+                      <span>32 мин</span>
+                      <span>345 кал</span>
                     </div>
                   </div>
                 </div>
@@ -148,10 +147,10 @@
                     </svg>
                   </div>
                   <div class="workout-info">
-                    <div class="workout-name">Evening Yoga</div>
+                    <div class="workout-name">Вечерняя йога</div>
                     <div class="workout-meta">
-                      <span>20 min</span>
-                      <span>120 cal</span>
+                      <span>20 мин</span>
+                      <span>120 кал</span>
                     </div>
                   </div>
                 </div>
@@ -164,9 +163,9 @@
                     </svg>
                   </div>
                   <div class="workout-info">
-                    <div class="workout-name">Add Workout</div>
+                    <div class="workout-name">Добавить тренировку</div>
                     <div class="workout-meta">
-                      <span>Log your activity</span>
+                      <span>Задай свой темп</span>
                     </div>
                   </div>
                 </div>
@@ -178,7 +177,7 @@
                   <path d="M3 7.6v12.8c0 .4.2.8.5 1.1.3.3.7.5 1.1.5h9.8"></path>
                   <path d="M15 2v5h5"></path>
                 </svg>
-                For You
+                Для тебя
               </div>
       
               <div class="card recommendation-card">
@@ -188,25 +187,25 @@
                   </svg>
                 </div>
                 <div class="recommendation-content">
-                  <div class="recommendation-title">Rest Day Recommendation</div>
-                  <div class="recommendation-text">You've been quite active this week! Consider taking a rest day or doing light stretching to help your muscles recover.</div>
-                  <div class="recommendation-action">View Recovery Tips</div>
+                  <div class="recommendation-title">Совет на день</div>
+                  <div class="recommendation-text">Ты был в ударе на этой неделе. Тебе стоит отдохнуть или растянуть свои мышцы для восстановления</div>
+                  <div class="recommendation-action">Посмотреть советы по восстановлению</div>
                 </div>
               </div>
       
               <div class="card weekly-challenge">
                 <div class="challenge-header">
-                  <div class="challenge-title">Weekly Challenge</div>
-                  <div class="challenge-days-left">3 DAYS LEFT</div>
+                  <div class="challenge-title">Недельное испытание</div>
+                  <div class="challenge-days-left">ОСТАЛОСЬ 3 ДНЯ</div>
                 </div>
-                <div class="challenge-description">Complete 5 workouts this week and earn 500 points</div>
+                <div class="challenge-description">Заверши 5 тренировок и заработай 500 очков</div>
                 <div class="challenge-progress-container">
                   <div class="challenge-progress-bar">
                     <div class="challenge-progress-fill"></div>
                   </div>
                   <div class="challenge-progress-text">3/5</div>
                 </div>
-                <button class="challenge-button">View Challenge</button>
+                <button class="challenge-button">Открыть испытание</button>
               </div>
       
               <div class="section-title">
@@ -214,9 +213,33 @@
                   <path d="M8.21 13.89L7 23l5-3 5 3-1.21-9.12"></path>
                   <circle cx="12" cy="8" r="7"></circle>
                 </svg>
-                Achievements
+                Достижения
               </div>
             </div>
+            
+            <div id="stats-content" class="tab-content">
+              <div class="section-title">Статистика</div>
+              <div class="card">
+                <h3>Ваша статистика</h3>
+                <p>Здесь будет отображаться подробная статистика вашей активности.</p>
+              </div>
+            </div>
+            
+            <div id="workout-content" class="tab-content">
+              <div class="section-title">Тренировки</div>
+              <div class="card">
+                <h3>Ваши тренировки</h3>
+                <p>Здесь будет список всех ваших тренировок.</p>
+              </div>
+            </div>
+            
+            <div id="profile-content" class="tab-content">
+              <div class="section-title">Профиль</div>
+              <div class="card">
+                <h3>Ваш профиль</h3>
+                <p>Здесь будет информация о вашем профиле.</p>
+              </div>
+            </div>  
       
             <div class="achievements">
               <div class="achievement unlocked" id="early-bird">
@@ -226,7 +249,7 @@
                     <polyline points="12 6 12 12 16 14"></polyline>
                   </svg>
                 </div>
-                <div class="achievement-name">Early Bird</div>
+                <div class="achievement-name">Жаворонок</div>
               </div>
       
               <div class="achievement unlocked" id="step-master">
@@ -235,7 +258,7 @@
                     <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
                   </svg>
                 </div>
-                <div class="achievement-name">Step Master</div>
+                <div class="achievement-name">Кардио-машина</div>
               </div>
       
               <div class="achievement" id="marathon">
@@ -244,7 +267,7 @@
                     <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
                   </svg>
                 </div>
-                <div class="achievement-name">Marathon</div>
+                <div class="achievement-name">Марафонист  </div>
               </div>
       
               <div class="achievement unlocked" id="yoga-master">
@@ -254,7 +277,7 @@
                     <path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2h0a3.13 3.13 0 0 1 3 3.88Z"></path>
                   </svg>
                 </div>
-                <div class="achievement-name">Yoga Master</div>
+                <div class="achievement-name">Достойный спортсмен</div>
               </div>
       
               <div class="achievement" id="night-owl">
@@ -263,7 +286,7 @@
                     <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
                   </svg>
                 </div>
-                <div class="achievement-name">Night Owl</div>
+                <div class="achievement-name">Ночная сова</div>
               </div>
       
               <div class="achievement" id="streak">
@@ -276,7 +299,7 @@
                     <path d="m12 3-9 9 9 9"></path>
                   </svg>
                 </div>
-                <div class="achievement-name">7-Day Streak</div>
+                <div class="achievement-name">Держусь неделю</div>
               </div>
             </div>
           </div>
@@ -287,7 +310,7 @@
                 <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                 <polyline points="9 22 9 12 15 12 15 22"></polyline>
               </svg>
-              <span class="nav-label">Home</span>
+              <span class="nav-label">Главная</span>
             </div>
       
             <div class="nav-item" id="stats-tab">
@@ -296,7 +319,7 @@
                 <line x1="12" y1="20" x2="12" y2="4"></line>
                 <line x1="6" y1="20" x2="6" y2="14"></line>
               </svg>
-              <span class="nav-label">Stats</span>
+              <span class="nav-label">Достижения</span>
             </div>
       
             <div class="nav-item" id="workout-tab">
@@ -304,7 +327,7 @@
                 <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
                 <polyline points="14 2 14 8 20 8"></polyline>
               </svg>
-              <span class="nav-label">Workouts</span>
+              <span class="nav-label">Тренировки</span>
             </div>
       
             <div class="nav-item" id="profile-tab">
@@ -312,7 +335,7 @@
                 <circle cx="12" cy="8" r="5"></circle>
                 <path d="M20 21a8 8 0 1 0-16 0"></path>
               </svg>
-              <span class="nav-label">Profile</span>
+              <span class="nav-label">Профиль</span>
             </div>
           </div>
         </div>

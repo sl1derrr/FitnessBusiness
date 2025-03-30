@@ -66,7 +66,37 @@ document.addEventListener('DOMContentLoaded', function() {
     animateStepsProgress();
     setupTouchFeedback();
   });
-  
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Получаем все элементы меню
+  const navItems = document.querySelectorAll('.nav-item');
+    
+  // Получаем все контенты вкладок
+  const tabContents = document.querySelectorAll('.tab-content');
+    
+  // Обработчик клика для каждой кнопки меню
+  navItems.forEach(item => {
+    item.addEventListener('click', function() {
+      // Удаляем активный класс у всех кнопок
+      navItems.forEach(navItem => {
+        navItem.classList.remove('active');
+      });
+        
+      // Добавляем активный класс текущей кнопке
+      this.classList.add('active');
+        
+      // Скрываем все вкладки
+      tabContents.forEach(content => {
+        content.classList.remove('active');
+      });
+        
+      // Показываем соответствующую вкладку
+      const tabId = this.id.replace('-tab', '-content');
+      document.getElementById(tabId)?.classList.add('active');
+    });
+  });
+});
+
   function animateStepsProgress() {
     const stepCounter = document.getElementById('step-counter');
     const progressRing = document.getElementById('progress-ring');
