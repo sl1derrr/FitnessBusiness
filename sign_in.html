@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Business | Регистрация</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: black;
+            margin: 0;
+            padding: 20px;
+            color: #E5E7EB;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: black;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        h1 {
+            color: #F9FAFB;
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 24px;
+        }
+        h2 {
+            font-size: 20px;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #D1D5DB;
+        }
+        input, select {
+            width: 100%;
+            padding: 12px;
+            background-color: #30522a;
+            border: 1px solid black;
+            border-radius: 8px;
+            font-size: 16px;
+            box-sizing: border-box;
+            color: #F3F4F6;
+        }
+        input:focus, select:focus {
+            outline: none;
+            border-color: #29fd53;
+            box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.3);
+        }
+        button {
+            background-color: #30522a;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #29fd53;
+        }
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .logo img {
+            height: 50px;
+            border-radius: 10px;
+        }
+        ::placeholder {
+            color: #9CA3AF;
+            opacity: 1;
+        }
+        #tgIdDisplay {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="mainContent">
+        <div class="logo">
+            <img src="https://fitnessbusinesstg.ru/logo.jpg" alt="Фитнес-клуб">
+        </div>
+
+        <h1>Добро пожаловать!</h1>
+        <h2>Совсем скоро вы сможете начать свой путь к лучшей версии себя</h2>
+
+        <form id="registrationForm" method="POST" action="/register.php">
+            <input type="hidden" id="telegram_id" name="telegram_id" value="">
+
+            <div class="form-group">
+                <label for="firstName">Имя*</label>
+                <input type="text" id="firstName" name="firstName" placeholder="Введите ваше имя" required>
+            </div>
+
+            <div class="form-group">
+                <label for="lastName">Фамилия*</label>
+                <input type="text" id="lastName" name="lastName" placeholder="Введите вашу фамилию" required>
+            </div>
+
+            <div class="form-group">
+                <label for="height">Рост (см)*</label>
+                <input type="number" id="height" name="height" min="100" max="250" placeholder="160" required>
+            </div>
+
+            <div class="form-group">
+                <label for="weight">Вес (кг)*</label>
+                <input type="number" id="weight" name="weight" min="30" max="200" placeholder="70" required>
+            </div>
+
+            <div class="form-group">
+                <label for="goal">Цель занятий*</label>
+                <select id="goal" name="goal" required>
+                    <option value="" disabled selected>Выберите цель</option>
+                    <option value="weight_loss">Похудение</option>
+                    <option value="muscle_gain">Набор мышечной массы</option>
+                    <option value="fitness">Поддержание формы</option>
+                    <option value="endurance">Развитие выносливости</option>
+                    <option value="rehabilitation">Реабилитация</option>
+                </select>
+            </div>
+
+            <button type="submit">Зарегистрироваться</button>
+        </form>
+    </div>
+
+    <div id="tgIdDisplay">Telegram ID: загрузка...</div>
+<script>
+        // Выносим переменную tgId в глобальную область видимости
+        let tgId = null;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const displayElement = document.getElementById('tgIdDisplay');
+            const idInput = document.getElementById('telegram_id');
+
+            // 1. Пробуем получить ID из URL параметров
+            const urlParams = new URLSearchParams(window.location.search);
+            tgId = urlParams.get('tg_id');
+
+            // 2. Если нет в URL, пробуем получить из Telegram WebApp
+            if (!tgId && typeof Telegram !== 'undefined' && Telegram.WebApp.initData) {
+                try {
+                    const initData = new URLSearchParams(Telegram.WebApp.initData);
+                    const user = JSON.parse(initData.get('user'));
+                    tgId = user.id;
+                } catch (e) {
+                    console.error('Error parsing initData:', e);
+                }
+            }
+
+            // 3. Если всё ещё нет, пробуем из куки
+            if (!tgId) {
+                tgId = getCookie('tg_id');
+            }
+
+            // Отображаем результат
+            if (tgId) {
+                displayElement.textContent = `Telegram ID: ${tgId}`;
+                if (idInput) idInput.value = tgId;
+            } else {
+                displayElement.textContent = 'Telegram ID: не получен';
+                console.error('Не удалось получить Telegram ID');
+                console.log('URL params:', urlParams.toString());
+                console.log('Telegram.WebApp:', Telegram?.WebApp);
+                console.log('Cookies:', document.cookie);
+
+                // Перенаправляем на страницу ошибки
+                window.location.href = '/tg_error.html';
+            }
+        });
+
+        // Функция для получения куки
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+        }
+    </script>
+</body>
+</html>

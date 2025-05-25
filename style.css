@@ -1,0 +1,1076 @@
+:root {
+  --green: #29fd53;
+  --clr: #222327;
+  --secondary_green: #30522a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+  background: #2a2a2a;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-indicator {
+  position: absolute;
+  width: 140px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.5);
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 3px;
+  z-index: 100;
+}
+
+.phone-screen {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  background:black;
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+  overflow-y: auto;
+  color: #ffffff;
+  position: relative;
+  padding: 40px 20px 90px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.container::-webkit-scrollbar {
+  display: none;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding: 0 5px;
+}
+
+.app-title {
+  font-size: 28px;
+  font-weight: 700;
+  background: var(--green);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--secondary_green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 600;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.progress-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0 25px;
+}
+
+.progress-container {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.progress-circle {
+    fill: none;
+    stroke-width: 12;
+    stroke-linecap: round;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+}
+
+.progress-bg {
+    stroke: rgba(255, 255, 255, 0.1);
+}
+
+.progress-fill {
+    stroke: var(--green);
+    stroke-dasharray: 0 552; /* Начальное значение */
+    stroke-dashoffset: 0;
+    transition: stroke-dasharray 1s ease-out;
+}
+
+.progress-text {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.step-count {
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.step-label {
+  font-size: 16px;
+  opacity: 0.8;
+}
+
+.step-goal {
+  margin-top: 5px;
+  font-size: 14px;
+  opacity: 0.6;
+}
+
+.activity-stats {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 15px;
+  padding: 0 10px;
+}
+
+.activity-stat {
+  text-align: center;
+}
+
+.activity-stat .stat-value {
+  font-size: 20px;
+  color: white;
+  font-weight: 600;
+}
+
+.activity-stat .stat-label {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+.weekly-chart {
+  margin-bottom: 25px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.chart-title {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.chart-controls {
+  display: flex;
+  gap: 5px;
+}
+
+.chart-button {
+  padding: 4px 8px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: black;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.chart-button.active {
+  background: var(--green);
+}
+
+.chart-container {
+  height: 150px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding-top: 10px;
+}
+
+.chart-bar {
+  width: 28px;
+  background-color: var(--green) !important;
+  border-radius: 6px;
+  position: relative;
+  transition: height 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.3s ease;
+}
+
+.chart-bar.active {
+  background: linear-gradient(to top, var(--secondary_green), var(--green));
+}
+
+.mon-bar {
+  height: 65%;
+}
+
+.tue-bar {
+  height: 55%;
+}
+
+.wed-bar {
+  height: 90%;
+}
+
+.thu-bar {
+  height: 30%;
+}
+
+.fri-bar {
+  height: 95%;
+}
+
+.sat-bar {
+  height: 50%;
+}
+
+.sun-bar {
+  height: 74%;
+}
+
+.day-label {
+  position: absolute;
+  bottom: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+.bar-value {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 11px;
+  opacity: 1;
+}
+
+.chart-bar:active {
+  background-color: var(--secondary_green);
+}
+
+.section-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 15px;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeIn 0.5s ease forwards;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.card:active {
+  transform: scale(0.98);
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.card:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+.card:nth-child(5) {
+  animation-delay: 0.5s;
+}
+
+.sleep-card {
+  background: rgba(255, 255, 255, 0.1)
+}
+
+.sleep-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.sleep-icon-container {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+}
+
+.sleep-icon-container svg {
+  stroke: var(--green);
+}
+
+.sleep-info .sleep-title {
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.sleep-info .sleep-time {
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+.progress-bar-container {
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+
+
+.sleep-progress {
+  height: 100%;
+  width: 85%;
+  background: var(--green);
+  border-radius: 3px;
+}
+
+.sleep-score {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+}
+
+.score-label {
+  opacity: 0.7;
+}
+
+.score-value {
+  font-weight: 500;
+}
+
+.recommendation-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 16px;
+}
+
+.recommendation-icon {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: #222327;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.recommendation-content {
+  flex: 1;
+}
+
+.recommendation-title {
+  font-weight: 600;
+  margin-bottom: 5px;
+  font-size: 16px;
+}
+
+.recommendation-text {
+  font-size: 14px;
+  opacity: 0.8;
+  margin-bottom: 10px;
+}
+
+.advice-button {
+  display: inline-block;
+  padding: 6px 12px;
+  background: var(--green);
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  color: black;
+  cursor: pointer;
+  transition: transform 0.5s, opacity 0.1;
+  border: none;
+}
+
+.advice-button:active {
+  transform: scale(0.95);
+  opacity: 0.9;
+}
+
+.weekly-challenge {
+  background: linear-gradient(135deg, var(--clr), var(--secondary_green));
+}
+
+.challenge-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.challenge-title {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.challenge-days-left {
+  background: var(--clr);
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.challenge-description {
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.challenge-progress-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.challenge-progress-bar {
+  flex-grow: 1;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-right: 10px;
+}
+
+.challenge-progress-fill {
+  height: 100%;
+  width: 60%;
+  background: linear-gradient(90deg, var(--secondary_green), var(--green));
+  border-radius: 4px;
+}
+
+.challenge-progress-text {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.challenge-button {
+  width: 100%;
+  background: var(--clr);
+  border: none;
+  color: white;
+  padding: 10px;
+  border-radius: 12px;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.workout-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.workout-card {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.workout-card:active {
+  transform: scale(0.98);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.workout-icon {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: var(--clr);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+  transition: all 0.3s ease;
+}
+
+.workout-info {
+  cursor: pointer;
+  flex: 1;
+}
+
+.workout-name {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.workout-meta {
+  display: flex;
+  gap: 12px;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+#add-workout .workout-icon {
+  animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+.achievements {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.achievement {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 15px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  opacity: 0.5;
+}
+
+.achievement.unlocked {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.13);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.achievement-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--clr);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.achievement.unlocked .achievement-icon {
+  background: var(--clr);
+}
+
+.achievement-name {
+  font-size: 12px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.achievement.newly-unlocked {
+  animation: highlight 2s ease;
+  box-shadow : 0 0 15px rgba(76, 201, 240, 0.5);
+}
+
+.signup-btn {
+    background-color: #4361EE;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 100px;
+}
+
+.signup-btn:hover {
+    background-color: #3A56D4;
+}
+
+.signup-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.signup-btn .spinner {
+    margin-right: 8px;
+}
+
+
+
+@keyframes highlight {
+
+  0%,
+  100% {
+    background: rgba(255, 255, 255, 0.13);
+  }
+
+  50% {
+    background: rgba(76, 201, 240, 0.3);
+  }
+}
+
+.bottom-nav {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 60px);
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 30px;
+  z-index: 50;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #ffffff;
+  transition: all 0.3s ease;
+}
+
+.nav-icon {
+  margin-bottom: 4px;
+}
+
+.nav-label {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.tab-content {
+  display: none;
+  padding: 10px 0;
+}
+
+.tab-content.active {
+  display: block;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.touch-active {
+  opacity: 0.8;
+  transform: scale(0.98);
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.form-group textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+.submit-btn {
+    background-color: #4361EE;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.submit-btn:hover {
+    background-color: #3A56D4;
+}
+
+
+
+
+
+
+
+.workout-icon svg,
+.achievement-icon svg,
+.recommendation-icon svg {
+  stroke: var(--green);
+}
+
+  /* ===================== */
+ /* Модальное окно совета */
+/* ===================== */
+
+
+
+/* Стили для модального окна */
+
+.modal-close {
+    background: var(--green);
+    color: #2a2a2a;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.3s ease;
+}
+
+.modal-close:hover {
+    background: #1f9c4a;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 1000;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.advice-modal {
+    background: #2a2a2a;
+    border-radius: 12px;
+    padding: 20px;
+    max-width: 90%;
+    width: 400px;
+    transform: translateY(-20px);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    position: relative;
+}
+
+.modal-overlay.active .advice-modal {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.advice-icon {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.advice-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.advice-stats {
+    font-size: 16px;
+    color: #fff;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.stat-item {
+    margin-bottom: 15px;
+}
+
+.stat-label {
+    font-size: 14px;
+    color: #fff;
+    margin-bottom: 5px;
+}
+
+.stat-value {
+    font-size: 16px;
+    color: var(--green);
+    margin-bottom: 5px;
+}
+
+
+.progress {
+    height: 100%;
+    background: var(--green);
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+.stat-status {
+    font-size: 12px;
+    color: #aaa;
+    margin-top: 5px;
+}
+
+
+.modal-close:hover {
+    background: #1f9c4a;
+}
+
+/* Навигация */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 40px);
+  max-width: 500px;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 30px;
+  z-index: 1000;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Стили для модального окна тренировки */
+
+
+/* Стили для модального окна тренировки */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 1000;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.advice-modal {
+    background: #2a2a2a;
+    border-radius: 16px;
+    padding: 20px;
+    max-width: 90%;
+    width: 400px;
+    transform: translateY(-20px);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    position: relative;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 14px;
+    color: #fff;
+}
+
+.modal-overlay.active .advice-modal {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.advice-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.advice-stats {
+    margin-top: 15px;
+}
+
+.stat-item {
+    margin-bottom: 15px;
+}
+
+.stat-label {
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.stat-value {
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: var(--green);
+}
+
+.stat-status {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.6);
+    margin-top: 3px;
+}
+
+.stat-text {
+    font-size: 14px;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 5px;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.modal-btn {
+    gap: 10px;
+    flex: 1; /* Занимает доступное пространство */
+    padding: 10px 20px; /* Чтобы высота соответствовала кнопке закрытия */
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    /* transition: all 0.2s;*/
+    text-align: center;
+    border: none;
+    font-size: 14px;
+    /* Наследуем ширину и высоту из .modal-close */
+    min-width: 100%; /* Занимает всю ширину контейнера .modal-buttons */
+    box-sizing: border-box; /* Чтобы padding не увеличивал общую ширину */
+}
+
+.modal-close {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.modal-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.signup-btn {
+    background: var(--green);
+    color: black;
+}
+
+.signup-btn:hover {
+    background: #1fd755;
+}
+
+.progress-bar {
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    margin-top: 5px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background: var(--green);
+    border-radius: 3px;
+    transition: width 0.3s ease;
+}
+
+.workout-card .workout-trainer {
+    display: none;
+}
+
+.modal-buttons {
+    display: flex;
+    flex-direction: column; /* Размещаем элементы вертикально */
+    gap: 10px; /* Отступ между кнопками */
+    margin-top: 20px;
+}
